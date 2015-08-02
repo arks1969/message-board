@@ -7,10 +7,13 @@
     <% @messages.each do |message| %>
       <span class="label label-info"><%= message.name %></span>
       <%= message.body %>
+      <% if message.age.present? %>
+        <span class="label label-success"><i>age:<%= message.age %></i></span>
+      <% end %>
       <% #edit.html.erbへリンクする %>
       [
       <%= link_to "edit" , edit_message_path(message) %> ,
-      <%= link_to "destroy" , message , method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
+      <%= link_to "delete" , message , method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
       ]
       <br>
     <% end %>
